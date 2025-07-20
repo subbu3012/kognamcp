@@ -5,7 +5,7 @@ A Model Context Protocol (MCP) server that provides tools for interacting with K
 ## Installation
 
 ```bash
-pip install kogna-mcp
+pip install kognamcp
 ```
 
 ## Configuration
@@ -16,7 +16,7 @@ Add this to your MCP client configuration (e.g., Cursor):
 {
   "mcpServers": {
     "kogna": {
-      "command": "kogna-mcp"
+      "command": "kognamcp"
     }
   }
 }
