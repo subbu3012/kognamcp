@@ -149,9 +149,9 @@ kognamcp --help
 pipx install build twine
 
 # Build package
-pyproject-build
+rm -rf dist && pyproject-build
 
-# Check package
+# Check package (optional)
 twine check dist/*
 ```
 
@@ -160,13 +160,13 @@ twine check dist/*
 #### 1. Version Update
 Edit `setup.py` and `kognamcp/__init__.py`:
 ```python
-version="1.0.7"  # Increment version
-__version__ = "1.0.7"
+version="1.0.12"  # Increment version
+__version__ = "1.0.12"
 ```
 
 #### 2. Build Package
 ```bash
-pyproject-build
+rm -rf dist && pyproject-build
 ```
 
 #### 3. Upload to PyPI
@@ -176,7 +176,7 @@ twine upload dist/*
 
 #### 4. Verify Upload
 ```bash
-pipx install kognamcp --force
+pipx upgrade kognamcp
 ```
 
 ## Configuration Management

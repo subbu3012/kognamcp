@@ -33,16 +33,16 @@ pipx install build twine
 ### 2. Update Version
 Edit `setup.py` and `kognamcp/__init__.py`:
 ```python
-version="1.0.7"  # Increment version
-__version__ = "1.0.7"
+version="1.0.12"  # Increment version
+__version__ = "1.0.12"
 ```
 
 ### 3. Build Package
 ```bash
-pyproject-build
+rm -rf dist && pyproject-build
 ```
 
-### 4. Check Package
+### 4. Check Package (Optional)
 ```bash
 twine check dist/*
 ```
@@ -54,7 +54,7 @@ twine upload dist/*
 
 ### 6. Verify Upload
 ```bash
-pipx install kognamcp --force
+pipx upgrade kognamcp
 ```
 
 ## Project Structure
@@ -87,4 +87,10 @@ kognamcp/
 - `1.0.0` - Initial release with MCP bridge functionality
 - `1.0.4` - Fixed package structure and added help functionality
 - `1.0.5` - Updated documentation with pipx instructions
-- `1.0.6` - Fixed help functionality 
+- `1.0.6` - Fixed help functionality
+- `1.0.7` - Cleaned up documentation and made it generic
+- `1.0.8` - Fixed JSON-RPC null ID issue
+- `1.0.9` - Fixed JSON-RPC notification handling
+- `1.0.10` - Fixed JSON-RPC notification handling
+- `1.0.11` - Cleaned up code and reduced duplication
+- `1.0.12` - Fixed help text formatting 
