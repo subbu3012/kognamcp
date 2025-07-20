@@ -4,26 +4,24 @@ A Model Context Protocol (MCP) server that provides tools for interacting with K
 
 ## Installation
 
-### Option 1: Using pipx (Recommended for CLI tools)
+### Install pipx (if you don't have it)
 
 ```bash
-# Install pipx if you don't have it
-brew install pipx  # macOS
-# or
-pip install pipx   # Other systems
+# macOS
+brew install pipx
 
-# Install kognamcp
-pipx install kognamcp
+# Other systems
+pip install pipx
 
 # Add pipx to your PATH (if not already done)
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-### Option 2: Using pip
+### Install kognamcp
 
 ```bash
-pip install kognamcp
+pipx install kognamcp
 ```
 
 ## Testing the Installation
@@ -108,12 +106,10 @@ For example, if `which kognamcp` returns `/Users/john/.local/bin/kognamcp`, your
 
 1. Make sure the installation completed successfully:
    ```bash
-   pipx list | grep kognamcp  # if using pipx
-   # or
-   pip list | grep kognamcp   # if using pip
+   pipx list | grep kognamcp
    ```
 
-2. Add pipx to your PATH (if using pipx):
+2. Add pipx to your PATH:
    ```bash
    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
    source ~/.zshrc
