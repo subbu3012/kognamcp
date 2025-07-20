@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="kogna-mcp",
+    name="kognamcp",
     version="1.0.0",
     description="Kogna MCP Server - Multi-agent AI avatar room engine",
     author="Subbu Bhamidipati",
@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "kogna-mcp=kogna-mcp.bridge:main",
+            "kognamcp=kognamcp.bridge:main",
         ],
     },
     python_requires=">=3.8",
@@ -30,8 +30,8 @@ setup(
     ],
     keywords="mcp, ai, avatar, conversation, multi-agent",
     project_urls={
-        "Homepage": "https://github.com/subbub/kogna-mcp",
-        "Bug Reports": "https://github.com/subbub/kogna-mcp/issues",
-        "Source": "https://github.com/subbub/kogna-mcp",
+        "Homepage": "https://github.com/subbub/kognamcp",
+        "Bug Reports": "https://github.com/subbub/kognamcp/issues",
+        "Source": "https://github.com/subbub/kognamcp",
     },
 ) 

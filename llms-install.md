@@ -7,7 +7,7 @@ Kogna is a multi-agent AI system that provides MCP tools for interacting with AI
 
 ### 1. Install the Package
 ```bash
-pip install kogna-mcp
+pip install kognamcp
 ```
 
 ### 2. Configure MCP Client
@@ -17,7 +17,7 @@ Add this configuration to your MCP client (e.g., Cursor):
 {
   "mcpServers": {
     "kogna": {
-      "command": "kogna-mcp"
+      "command": "kognamcp"
     }
   }
 }
