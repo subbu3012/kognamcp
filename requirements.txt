@@ -1,0 +1,4 @@
+setuptools>=65.0.0
+wheel>=0.40.0
+requests>=2.25.0
+httpx>=0.24.0 
