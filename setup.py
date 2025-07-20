@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="kognamcp",
-    version="1.0.0",
+    version="1.0.7",
     description="Kogna MCP Server - Multi-agent AI avatar room engine",
     author="Subbu Bhamidipati",
     author_email="bhsubbu.1995@gmail.com",
