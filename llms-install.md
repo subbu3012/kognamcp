@@ -3,27 +3,14 @@
 ## Overview
 Kogna is a multi-agent AI system that provides MCP tools for interacting with AI avatars in virtual rooms. The server connects to a hosted backend service.
 
-## Installation Steps
+## Quick Installation
 
-### 1. Install the Package
-```bash
-pip install kognamcp
-```
+For detailed installation instructions, see the main [README.md](https://github.com/subbub/kognamcp#installation).
 
-### 2. Configure MCP Client
-Add this configuration to your MCP client (e.g., Cursor):
-
-```json
-{
-  "mcpServers": {
-    "kogna": {
-      "command": "kognamcp"
-    }
-  }
-}
-```
-
-That's it! The Kogna MCP server will connect to the hosted backend automatically.
+### Basic Setup
+1. Install: `pipx install kognamcp`
+2. Find path: `which kognamcp`
+3. Configure MCP client with the full path
 
 ## Available MCP Tools
 
@@ -95,54 +82,70 @@ That's it! The Kogna MCP server will connect to the hosted backend automatically
 
 ## Testing the Installation
 
-1. Start a conversation:
-   ```json
-   {
-     "jsonrpc": "2.0",
-     "id": 1,
-     "method": "tools/call",
-     "params": {
-       "name": "start_kogna_conversation",
-       "arguments": {
-         "platform_user_id": "user123",
-         "platform": "cursor",
-         "channel_id": "channel456",
-         "message": "Hello! Can you introduce yourself?"
-       }
-     }
-   }
-   ```
+### 1. Test the MCP Bridge Connection
+```bash
+echo '{"jsonrpc": "2.0", "method": "initialize", "id": 1}' | kognamcp
+```
 
-2. Send a message:
-   ```json
-   {
-     "jsonrpc": "2.0",
-     "id": 2,
-     "method": "tools/call",
-     "params": {
-       "name": "send_kogna_message",
-       "arguments": {
-         "platform_user_id": "user123",
-         "platform": "cursor",
-         "channel_id": "channel456",
-         "message": "Tell me about your capabilities"
-       }
-     }
-   }
-   ```
+You should get a response like:
+```json
+{"jsonrpc": "2.0", "id": 1, "result": {"protocolVersion": "2024-11-05", "capabilities": {"tools": {}}, "serverInfo": {"name": "kognamcp-server", "version": "1.0.0"}}}
+```
 
-3. List available avatars:
-   ```json
-   {
-     "jsonrpc": "2.0",
-     "id": 3,
-     "method": "tools/call",
-     "params": {
-       "name": "list_kogna_avatars",
-       "arguments": {}
-     }
-   }
-   ```
+### 2. Test Tool Discovery
+```bash
+echo '{"jsonrpc": "2.0", "method": "tools/list", "id": 2}' | kognamcp
+```
+
+### 3. Test Conversation Tools
+Start a conversation:
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "start_kogna_conversation",
+    "arguments": {
+      "platform_user_id": "user123",
+      "platform": "cursor",
+      "channel_id": "channel456",
+      "message": "Hello! Can you introduce yourself?"
+    }
+  }
+}
+```
+
+Send a message:
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "send_kogna_message",
+    "arguments": {
+      "platform_user_id": "user123",
+      "platform": "cursor",
+      "channel_id": "channel456",
+      "message": "Tell me about your capabilities"
+    }
+  }
+}
+```
+
+List available avatars:
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "tools/call",
+  "params": {
+    "name": "list_kogna_avatars",
+    "arguments": {}
+  }
+}
+```
 
 ## Session Management
 
@@ -155,10 +158,12 @@ These parameters ensure conversations are properly isolated and managed across d
 
 ## Troubleshooting
 
-- **Rate Limiting**: The server implements rate limiting (50 requests/minute per IP)
-- **No Authentication Required**: The service is open for public use
-- **Service Status**: The server is deployed on Railway and should be always available
-- **Session Management**: Make sure to provide all required session parameters
+For detailed troubleshooting, see the main [README.md](https://github.com/subbub/kognamcp#troubleshooting).
+
+Common issues:
+- **"Command not found"**: Use `which kognamcp` to find the full path
+- **"spawn kognamcp ENOENT"**: Use the full path in your MCP configuration
+- **Connection errors**: Ensure internet access to `https://kogna.up.railway.app/mcp`
 
 ## Support
 

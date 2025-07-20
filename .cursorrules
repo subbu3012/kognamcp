@@ -1,0 +1,34 @@
+# Cursor Rules for kognamcp project
+
+## Git Commit Standards
+- Always use conventional commits format: `type(scope): description`
+- Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+- Examples:
+  - `feat: add new MCP bridge functionality`
+  - `fix: resolve help command issue in bridge.py`
+  - `docs: update README with pipx installation`
+  - `refactor: restructure package directory layout`
+
+## Code Standards
+- Follow PEP 8 for Python code
+- Use descriptive variable and function names
+- Add docstrings for public functions
+- Keep functions focused and single-purpose
+
+## Documentation
+- Keep documentation concise and user-friendly
+- Avoid redundant information across files
+- Make instructions generic (not client-specific)
+- Include troubleshooting sections where helpful
+
+## Package Management
+- Use pipx for global CLI tool installation
+- Keep requirements.txt minimal and specific
+- Update version numbers consistently across files
+- Test package installation before publishing
+
+## MCP Bridge Development
+- Maintain JSON-RPC 2.0 compliance
+- Handle stdin/stdout communication properly
+- Provide clear error messages
+- Support standard MCP methods (initialize, tools/list, tools/call) 

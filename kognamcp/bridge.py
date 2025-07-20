@@ -8,10 +8,32 @@ import sys
 import json
 import httpx
 import asyncio
+import argparse
 
 BASE_URL = "https://kogna.up.railway.app/mcp"
 
-async def main():
+def main():
+    """Entry point for the MCP bridge."""
+    parser = argparse.ArgumentParser(
+        description="Kogna MCP Bridge - Forwards MCP requests to the Kogna HTTP server",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+            Examples:
+            # Run as MCP server (reads from stdin, writes to stdout)
+            kognamcp
+            
+            # Test with echo (for development)
+            echo '{"jsonrpc": "2.0", "method": "initialize", "id": 1}' | kognamcp
+                    """
+        )
+    
+    # Parse arguments
+    args, unknown = parser.parse_known_args()
+    
+    # Run the MCP bridge
+    asyncio.run(async_main())
+
+async def async_main():
     """Bridge between MCP stdin/stdout and HTTP using httpx."""
     async with httpx.AsyncClient() as client:
         for line in sys.stdin:
@@ -122,4 +144,4 @@ async def main():
                 sys.stdout.flush()
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    main() 
