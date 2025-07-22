@@ -23,6 +23,9 @@ async def mcp_proxy(request: Request):
     try:
         json_body = await request.json()
         method = json_body.get("method")
+        # Dummy handler for notifications/initialized
+        if method == "notifications/initialized":
+            return Response(status_code=200)
         endpoint = METHOD_TO_ENDPOINT.get(method)
         if not endpoint:
             return Response(content='{"error": "Unknown method"}', status_code=400, media_type="application/json")
