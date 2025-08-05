@@ -5,7 +5,7 @@ import uvicorn
 
 app = FastAPI()
 
-# Get the port from the environment variable (default to 8080 for local dev)
+# Get the port from the environment variable (default to 8080 for Smithery, 7860 for Hugging Face)
 PORT = int(os.environ.get("PORT", 8080))
 
 # Kogna backend MCP endpoint
@@ -34,7 +34,7 @@ async def mcp_proxy(request: Request):
 
     async with httpx.AsyncClient() as client:
         try:
-            response = await client.post(endpoint, content=body, headers={"Content-Type": "application/json"})
+            response = await client.post(endpoint, content=body, headers={"Content-Type": "application/json"}, timeout=60.0)
             return Response(content=response.content, status_code=response.status_code, media_type="application/json")
         except httpx.RequestError as e:
             return Response(content=f'{{"error": "Upstream request error: {str(e)}"}}', status_code=502, media_type="application/json")

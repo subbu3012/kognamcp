@@ -1,3 +1,13 @@
+---
+title: Kogna MCP Server
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+---
+
 # Kogna MCP Server
 
 A Model Context Protocol (MCP) server that provides tools for interacting with Kogna's multi-agent AI avatar system.
